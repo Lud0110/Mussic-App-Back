@@ -40,7 +40,7 @@ const login = (req, res) => {
         const validPassword = bcrypt.compareSync(password, user.password);
         if (!validPassword) return res.status(401).json({ message: 'Credenciales incorrectas' });
 
-        const token = jwt.sing(
+        const token = jwt.sign(
             { id: user.id, role: user.role },
             process.env.JWT_SECRET,
             { expiresIn: '24' }
